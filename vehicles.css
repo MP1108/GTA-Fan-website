@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;600;700&display=swap');
+
+:root {
+    --gold: #ffcc00;
+    --gold-bright: #ffe566;
+    --gold-dim: #b38f00;
+    --red: #ff2244;
+    --bg: #0a0a0a;
+    --panel: rgba(10, 10, 10, 0.92);
+    --border: rgba(255, 204, 0, 0.2);
+    --text: #e0e0e0;
+    --text-dim: #666;
+    --glow-gold: 0 0 20px rgba(255, 204, 0, 0.35);
+    --glow-red: 0 0 20px rgba(255, 34, 68, 0.4);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+body {
+    font-family: 'Barlow Condensed', sans-serif;
+    background-color: var(--bg);
+    background-image:
+        url('hellcat.jpg'),
+        radial-gradient(ellipse at 15% 0%, rgba(255,204,0,0.05) 0%, transparent 50%);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 80px 20px 60px;
+    cursor: crosshair;
+    transition: color 0.4s ease;
+}
+
+body.dark-mode {
+    --panel: rgba(3, 3, 3, 0.96);
+    --border: rgba(255, 204, 0, 0.12);
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.7) 100%);
+    z-index: -1;
+    pointer-events: none;
+    transition: background 0.4s ease;
+}
+
+body.dark-mode::after {
+    background: linear-gradient(180deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.72) 50%, rgba(0,0,0,0.92) 100%);
+}
+
+.controls {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+    display: flex;
+    gap: 8px;
+}
+
+.controls button {
+    padding: 7px 14px;
+    background: rgba(8,8,8,0.88);
+    border: 1px solid var(--gold-dim);
+    border-radius: 2px;
+    color: var(--gold);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+}
+
+.controls button:hover {
+    background: var(--gold);
+    color: #000;
+    box-shadow: var(--glow-gold);
+}
+
+body.dark-mode .controls button {
+    background: rgba(2,2,2,0.95);
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 36px 36px 40px;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8), inset 0 0 80px rgba(0,0,0,0.2);
+    position: relative;
+    animation: panelIn 0.6s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    width: 18px; height: 18px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.4;
+}
+.container::before { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+.container::after  { bottom: 12px; left: 12px;  border-width: 0 0 2px 2px; }
+
+@keyframes panelIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    color: var(--gold);
+    letter-spacing: 5px;
+    line-height: 1;
+    text-shadow: 0 0 30px rgba(255,204,0,0.45);
+}
+
+.page-header__sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    display: block;
+    margin-top: 5px;
+}
+
+.back-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    text-decoration: none;
+    padding: 9px 18px;
+    border: 1px solid rgba(255,34,68,0.35);
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    margin-top: 8px;
+}
+
+.back-btn:hover {
+    background: var(--red);
+    color: #fff;
+    box-shadow: var(--glow-red);
+}
+
+.table-wrap {
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--gold);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 36px;
+    animation: fadeUp 0.5s 0.15s both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.vehicles-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.vehicles-table thead tr {
+    border-bottom: 2px solid var(--gold);
+}
+
+.vehicles-table th {
+    background: rgba(255,204,0,0.07);
+    color: var(--gold);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.vehicles-table td {
+    padding: 13px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 1rem;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.vehicles-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.vehicles-table tbody tr:hover {
+    background: rgba(255,204,0,0.04);
+    box-shadow: inset 3px 0 0 var(--gold);
+}
+
+.cell-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    width: 50px;
+}
+
+.cell-name { color: var(--text); }
+
+.type-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    background: rgba(255,204,0,0.07);
+    border: 1px solid rgba(255,204,0,0.18);
+    border-radius: 2px;
+    color: var(--gold-dim);
+    white-space: nowrap;
+}
+
+.cell-opis {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    font-weight: 400;
+    max-width: 400px;
+}
+
+.forms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    animation: fadeUp 0.5s 0.25s both;
+}
+
+.form-panel {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 22px 20px;
+}
+
+.form-panel--delete {
+    border-left-color: var(--red);
+}
+
+.form-panel__title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-panel--delete .form-panel__title {
+    color: var(--red);
+}
+
+.field {
+    margin-bottom: 13px;
+}
+
+.field label {
+    display: block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 5px;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 9px 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,204,0,0.15);
+    border-radius: 2px;
+    color: var(--text);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field textarea {
+    min-height: 72px;
+    resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(255,204,0,0.07);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: rgba(255,255,255,0.18);
+    font-style: italic;
+}
+
+form > input[type="submit"] {
+    width: 100%;
+    margin-top: 4px;
+    padding: 11px;
+    background: var(--gold);
+    border: none;
+    border-radius: 2px;
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+form > input[type="submit"]:hover {
+    background: var(--gold-bright);
+    box-shadow: var(--glow-gold);
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    background: var(--red) !important;
+    color: #fff !important;
+}
+
+.btn-delete:hover {
+    background: #ff4466 !important;
+    box-shadow: var(--glow-red) !important;
+}
+
+@media (max-width: 900px) {
+    .forms-grid { grid-template-columns: 1fr 1fr; }
+    .form-panel--delete { grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px) {
+    body { padding: 70px 10px 40px; }
+    .container { padding: 20px 14px; }
+    h1 { font-size: 2.4rem; }
+    .page-header { flex-direction: column; gap: 14px; }
+    .forms-grid { grid-template-columns: 1fr; }
+    .form-panel--delete { grid-column: span 1; }
+    .vehicles-table th,
+    .vehicles-table td { padding: 10px; font-size: 0.85rem; }
+}

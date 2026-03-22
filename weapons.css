@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;600;700&display=swap');
+
+:root {
+    --gold: #ffcc00;
+    --gold-bright: #ffe566;
+    --gold-dim: #b38f00;
+    --red: #ff2244;
+    --orange: #ff9900;
+    --bg: #0a0a0a;
+    --panel: rgba(12, 12, 12, 0.95);
+    --border: rgba(255, 204, 0, 0.2);
+    --text: #e0e0e0;
+    --text-dim: #666;
+    --glow-gold: 0 0 20px rgba(255, 204, 0, 0.35);
+    --glow-red: 0 0 20px rgba(255, 34, 68, 0.4);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+body {
+    font-family: 'Barlow Condensed', sans-serif;
+    background: var(--bg);
+    background-image:
+        radial-gradient(ellipse at 20% 0%, rgba(255,204,0,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(255,150,0,0.04) 0%, transparent 50%);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 60px;
+    cursor: crosshair;
+}
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 5% 24px;
+    border-bottom: 1px solid var(--border);
+    animation: fadeDown 0.6s both;
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-header__inner { display: flex; flex-direction: column; }
+
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--gold);
+    letter-spacing: 6px;
+    line-height: 1;
+    text-shadow: 0 0 30px rgba(255,204,0,0.4);
+}
+
+.page-header__sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+.back-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    text-decoration: none;
+    padding: 9px 20px;
+    border: 1px solid rgba(255,34,68,0.4);
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background: var(--red);
+    color: #fff;
+    box-shadow: var(--glow-red);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 90%;
+    max-width: 600px;
+    margin: 28px auto 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    padding: 10px 16px;
+    border-radius: 2px;
+    animation: fadeDown 0.6s 0.1s both;
+}
+
+.search-bar__icon {
+    font-size: 1.2rem;
+    color: var(--gold-dim);
+}
+
+#search {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+}
+
+#search::placeholder {
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+}
+
+.table-container {
+    width: 90%;
+    margin: 0 auto 40px;
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--gold);
+    border-radius: 2px;
+    overflow: hidden;
+    animation: fadeUp 0.6s 0.2s both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+table { width: 100%; border-collapse: collapse; }
+
+thead tr { border-bottom: 2px solid var(--gold); }
+
+th {
+    background: rgba(255,204,0,0.06);
+    color: var(--gold);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+td {
+    padding: 13px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 1rem;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: rgba(255,204,0,0.04);
+    box-shadow: inset 3px 0 0 var(--gold);
+}
+
+.cell-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    width: 50px;
+}
+
+.cell-name { color: var(--text); }
+
+.type-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    background: rgba(255,204,0,0.08);
+    border: 1px solid rgba(255,204,0,0.2);
+    border-radius: 2px;
+    color: var(--gold-dim);
+    white-space: nowrap;
+}
+
+.cell-dmg {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 140px;
+}
+
+.dmg-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.dmg-bar__fill {
+    height: 100%;
+    border-radius: 1px;
+    width: 0;
+    box-shadow: 0 0 8px currentColor;
+}
+
+.dmg-value {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    min-width: 24px;
+    text-align: right;
+}
+
+.btn-edit {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    background: rgba(255,204,0,0.1);
+    border: 1px solid var(--gold-dim);
+    border-radius: 2px;
+    color: var(--gold);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-edit:hover {
+    background: var(--gold);
+    color: #000;
+    box-shadow: var(--glow-gold);
+}
+
+.forms-grid {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    animation: fadeUp 0.6s 0.3s both;
+}
+
+.form-panel {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 24px 20px;
+}
+
+.form-panel--delete {
+    border-left-color: var(--red);
+}
+
+.form-panel__title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-panel--delete .form-panel__title {
+    color: var(--red);
+}
+
+.field {
+    margin-bottom: 14px;
+}
+
+.field label {
+    display: block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 5px;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 9px 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,204,0,0.15);
+    border-radius: 2px;
+    color: var(--text);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field input[readonly] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.field textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(255,204,0,0.07);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: rgba(255,255,255,0.18);
+    font-style: italic;
+}
+
+form > input[type="submit"] {
+    width: 100%;
+    margin-top: 4px;
+    padding: 11px;
+    background: var(--gold);
+    border: none;
+    border-radius: 2px;
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+form > input[type="submit"]:hover {
+    background: var(--gold-bright);
+    box-shadow: var(--glow-gold);
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    background: var(--red) !important;
+    color: #fff !important;
+}
+
+.btn-delete:hover {
+    box-shadow: var(--glow-red) !important;
+    background: #ff4466 !important;
+}
+
+@media (max-width: 900px) {
+    .forms-grid { grid-template-columns: 1fr 1fr; }
+    .form-panel--delete { grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px) {
+    .page-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .forms-grid { grid-template-columns: 1fr; }
+    .form-panel--delete { grid-column: span 1; }
+    .table-container { width: 100%; border-radius: 0; border-left: none; border-right: none; }
+    td, th { padding: 10px 10px; font-size: 0.85rem; }
+}
