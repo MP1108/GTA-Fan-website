@@ -1,5 +1,5 @@
-# GTA Fan Website
-Fan-made web app for GTA V / GTA VI — manage weapons, vehicles, heists, and characters.
+# GTA Fan Website 🌴
+A fan-made GTA V / GTA VI web app to browse and manage weapons, vehicles, heists, and characters.
 
 🚀 **Features**
 - Browse and manage weapons, vehicles, heists, and characters
@@ -27,8 +27,10 @@ Fan-made web app for GTA V / GTA VI — manage weapons, vehicles, heists, and ch
 
 login: gta
 
-
 password: 123
 
-
+⚠️ **Disclaimer**
+This is a **fan-made project** for educational and personal use only.  
+All original content and intellectual property rights belong to **Rockstar Games**.  
+No commercial use is intended.
 <img width="1912" height="939" alt="Zrzut ekranu (24)" src="https://github.com/user-attachments/assets/4667fa96-3db5-4394-8aa4-553b1893c6de" />
