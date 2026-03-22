@@ -25,9 +25,9 @@ A fan-made GTA V / GTA VI web app to browse and manage weapons, vehicles, heists
 
 🔑 **Login**
 
-login: gta
+Login: gta
 
-password: 123
+Password: 123
 
 ⚠️ **Disclaimer**
 This is a **fan-made project** for educational and personal use only.  
