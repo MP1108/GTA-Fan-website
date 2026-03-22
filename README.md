@@ -28,4 +28,4 @@ login: gta
 password: 123
 
 
-![GTA Fan Website]<img width="1912" height="939" alt="Zrzut ekranu (24)" src="https://github.com/user-attachments/assets/4667fa96-3db5-4394-8aa4-553b1893c6de" />
+<img width="1912" height="939" alt="Zrzut ekranu (24)" src="https://github.com/user-attachments/assets/4667fa96-3db5-4394-8aa4-553b1893c6de" />
